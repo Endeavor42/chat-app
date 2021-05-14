@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import {
   Avatar,
   createStyles,
@@ -6,8 +6,6 @@ import {
   InputBase,
   makeStyles,
   Theme,
-  Drawer,
-  Button,
 } from "@material-ui/core";
 import { deepOrange } from "@material-ui/core/colors";
 import DonutLargeOutlinedIcon from "@material-ui/icons/DonutLargeOutlined";
@@ -16,6 +14,7 @@ import MoreVertOutlinedIcon from "@material-ui/icons/MoreVertOutlined";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 
 import "../styles/sidebar.scss";
+import ChatDrawer from "./ChatDrawer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,19 +23,8 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: deepOrange[500],
       cursor: "pointer",
     },
-    drawer: {
-      width: "31vw",
-      maxWidth: 582,
-      minWidth: 300,
-    },
   })
 );
-
-// const buttonIcons: JSX.Element[] = [
-//   <DonutLargeOutlinedIcon />,
-//   <ChatOutlinedIcon />,
-//   <MoreVertOutlinedIcon />,
-// ];
 
 function Sidebar() {
   const [toggle, setToggle] = useState<boolean>(false);
@@ -44,16 +32,8 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
+      <ChatDrawer toggle={toggle} setToggle={setToggle} />
       <div className="sidebar__header">
-        <Drawer
-          BackdropProps={{ invisible: true }}
-          anchor="left"
-          open={toggle}
-          elevation={0}
-          onClose={() => setToggle(false)}
-        >
-          <div className={classes.drawer} />
-        </Drawer>
         <Avatar className={classes.orange}>F</Avatar>
         <div className="sidebar__buttons">
           {/* Status */}

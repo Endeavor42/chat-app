@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/header.scss";
 import MoreVertOutlinedIcon from "@material-ui/icons/MoreVertOutlined";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
