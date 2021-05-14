@@ -1,0 +1,19 @@
+.header {
+  height: 59px;
+  width: 100%;
+  min-width: 400px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--panel-header-background);
+  border: solid var(--border-color) 1px;
+  border-top-width: 0px;
+  align-items: center;
+  &__left {
+    display: flex;
+    align-items: center;
+    .MuiAvatar-root {
+      margin-right: 15px;
+    }
+  }
+}

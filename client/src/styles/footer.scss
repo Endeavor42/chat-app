@@ -1,0 +1,19 @@
+.footer {
+  height: 62px;
+  padding: 0px 10px;
+  background-color: var(--panel-input-background);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  &__messageBar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 4px 20px;
+    .searchInput {
+      flex: 1;
+    }
+  }
+}
