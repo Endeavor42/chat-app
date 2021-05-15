@@ -1,10 +1,16 @@
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Avatar,
+  ClickAwayListener,
   createStyles,
+  Grow,
   IconButton,
   InputBase,
   makeStyles,
+  MenuItem,
+  MenuList,
+  Paper,
+  Popper,
   Theme,
 } from "@material-ui/core";
 import { deepOrange } from "@material-ui/core/colors";
@@ -23,16 +29,35 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: deepOrange[500],
       cursor: "pointer",
     },
+    menuItem: {
+      width: 180,
+      display: "flex",
+    },
   })
 );
 
 function Sidebar() {
-  const [toggle, setToggle] = useState<boolean>(false);
+  const [toggleDrawer, setToggleDrawer] = useState<boolean>(false);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const anchorRef = useRef<HTMLButtonElement>(null);
   const classes = useStyles();
+
+  const handleToggle = () => {
+    setOpenMenu((prevOpen: boolean) => !prevOpen);
+  };
+
+  const handleClose = (event: React.MouseEvent<EventTarget>) => {
+    if (anchorRef?.current?.contains(event?.target as HTMLElement)) return;
+
+    setOpenMenu(false);
+  };
 
   return (
     <div className="sidebar">
-      <ChatDrawer toggle={toggle} setToggle={setToggle} />
+      <ChatDrawer
+        toggleDrawer={toggleDrawer}
+        setToggleDrawer={setToggleDrawer}
+      />
       <div className="sidebar__header">
         <Avatar className={classes.orange}>F</Avatar>
         <div className="sidebar__buttons">
@@ -41,13 +66,47 @@ function Sidebar() {
             <DonutLargeOutlinedIcon />
           </IconButton>
           {/* Message */}
-          <IconButton onClick={() => setToggle(true)}>
+          <IconButton onClick={() => setToggleDrawer(true)}>
             <ChatOutlinedIcon />
           </IconButton>
           {/* Menu */}
-          <IconButton onClick={() => alert("Menu")}>
+          <IconButton ref={anchorRef} onClick={handleToggle}>
             <MoreVertOutlinedIcon />
           </IconButton>
+          <Popper
+            open={openMenu}
+            anchorEl={anchorRef.current}
+            transition
+            disablePortal
+            style={{ zIndex: 999 }}
+          >
+            {({ TransitionProps }) => (
+              <Grow {...TransitionProps}>
+                <Paper>
+                  <ClickAwayListener onClickAway={handleClose}>
+                    <MenuList autoFocusItem={openMenu}>
+                      {[
+                        "New group",
+                        "Create a room",
+                        "Profile",
+                        "Archived",
+                        "Starred",
+                        "Settings",
+                        "Log out",
+                      ].map((itemName: string) => (
+                        <MenuItem
+                          className={classes.menuItem}
+                          onClick={handleClose}
+                        >
+                          {itemName}
+                        </MenuItem>
+                      ))}
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Popper>
         </div>
       </div>
       <div className="sidebar__searchContainer">

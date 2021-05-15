@@ -5,24 +5,24 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import GroupAddIcon from "@material-ui/icons/GroupAdd";
 
 interface Props {
-  toggle: boolean;
-  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleDrawer: boolean;
+  setToggleDrawer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function ChatDrawer({ toggle, setToggle }: Props) {
+function ChatDrawer({ toggleDrawer, setToggleDrawer }: Props) {
   return (
     <Drawer
       BackdropProps={{ invisible: true }}
       anchor="left"
-      open={toggle}
+      open={toggleDrawer}
       elevation={0}
-      onClose={() => setToggle(false)}
+      onClose={() => setToggleDrawer(false)}
     >
       <div className="chatDrawer">
         <div className="chatDrawer__top">
           <div className="bottomBox">
             <IconButton
-              onClick={() => setToggle(false)}
+              onClick={() => setToggleDrawer(false)}
               style={{ color: "white", marginRight: 20 }}
             >
               <ArrowBackIcon />
@@ -42,5 +42,8 @@ function ChatDrawer({ toggle, setToggle }: Props) {
     </Drawer>
   );
 }
+
+// TODO: Move specific section using react router
+// TODO: Use Chips when selecting individuals
 
 export default ChatDrawer;

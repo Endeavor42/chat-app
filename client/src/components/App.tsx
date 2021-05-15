@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/app.scss";
 import Chat from "./Chat";
 import Footer from "./Footer";
