@@ -31,7 +31,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     menuItem: {
       width: 180,
-      display: "flex",
+      minHeight: "unset",
+      [theme.breakpoints.up("sm")]: {
+        minHeight: "unset",
+      },
     },
   })
 );
