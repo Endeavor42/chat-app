@@ -1,0 +1,102 @@
+.newChat {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  &__top {
+    color: white;
+    padding: 20px;
+    height: 118px;
+    background-color: var(--theme-color);
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    .bottomBox {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &__group {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px;
+    border-bottom: solid var(--border-color) 1px;
+    &:hover {
+      background-color: var(--hover-color);
+    }
+    .avatar {
+      background-color: #009688;
+      margin-right: 20px;
+    }
+  }
+  &__selected {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px 0px 12px 34px;
+    box-sizing: border-box;
+    max-height: 200px;
+    overflow-y: auto;
+    .selectedChip {
+      margin: 3px 5px;
+    }
+  }
+  &__participants {
+    flex: 1;
+    .listItem {
+      &:hover {
+        background-color: var(--hover-color);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__groupAvatar {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px;
+    position: relative;
+    .avatar {
+      cursor: pointer;
+      width: 200px;
+      height: 200px;
+      input {
+        display: none;
+      }
+      .overlay {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(102, 102, 102, 0.73);
+        height: 100%;
+        width: 100%;
+        .MuiSvgIcon-root {
+          font-size: 26px;
+        }
+      }
+      .overlay.hidden {
+        display: none;
+      }
+      &:hover .overlay.hidden {
+        display: flex;
+      }
+    }
+  }
+
+  &__bottom {
+    height: 100px;
+    width: 100%;
+    background-color: var(--hover-color);
+    display: grid;
+    place-items: center;
+  }
+  .next--btn {
+    height: 50px;
+    width: 50px;
+    background-color: var(--button-round-background);
+    border-radius: 35px;
+    box-shadow: 0 1px 3px rgba(#000, 0.4);
+  }
+}
