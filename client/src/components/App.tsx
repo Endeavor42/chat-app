@@ -3,6 +3,8 @@ import Chat from "./Chat";
 import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import store from "../store";
+import { Provider } from "react-redux";
 
 function App() {
   return (
@@ -17,4 +19,10 @@ function App() {
   );
 }
 
-export default App;
+const AppWrapper = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+export default AppWrapper;
