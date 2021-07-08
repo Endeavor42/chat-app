@@ -43,12 +43,12 @@
   }
   &__participants {
     flex: 1;
-    .listItem {
-      &:hover {
-        background-color: var(--hover-color);
-        cursor: pointer;
-      }
-    }
+    // .listItem {
+    //   &:hover {
+    //     background-color: var(--hover-color);
+    //     cursor: pointer;
+    //   }
+    // }
   }
 
   &__groupAvatar {
