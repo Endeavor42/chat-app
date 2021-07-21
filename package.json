@@ -16,5 +16,9 @@
     "@types/node": "^16.0.1",
     "concurrently": "^6.2.0",
     "nodemon": "^2.0.9"
-  }
+  },
+	"scripts": {
+		"build": "tsc",
+		"start": "concurrently \"tsc -w\" \"nodemon dist/js/app.js\""
+	}
 }

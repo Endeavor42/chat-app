@@ -9,7 +9,7 @@ function Chat() {
 
   return (
     <div className="chat">
-      {messages.map(({ message, type }) => (
+      {messages.map(({ text, type }) => (
         <div
           className="chat__messageContainer"
           style={
@@ -26,7 +26,7 @@ function Chat() {
                 : { backgroundColor: "#fff" }
             }
           >
-            <Typography>{message}</Typography>
+            <Typography>{text}</Typography>
           </div>
         </div>
       ))}

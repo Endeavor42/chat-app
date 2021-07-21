@@ -15,16 +15,16 @@ const iconButtons: JSX.Element[] = [
 
 function Footer() {
   const dispatch = useDispatch();
-  const [message, setMessage] = useState<string>(undefined!);
+  const [text, setText] = useState<string>(undefined!);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMessage(e.target.value);
+    setText(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(addMessage({ message, type: "user" }));
-    setMessage("");
+    dispatch(addMessage({ text, type: "user" }));
+    setText("");
   };
 
   return (
@@ -38,9 +38,9 @@ function Footer() {
         <form style={{ width: "100%" }} onSubmit={handleSubmit}>
           <InputBase
             onChange={handleChange}
-            value={message}
+            value={text}
             className="searchInput"
-            placeholder="Type a message"
+            placeholder="Type a text"
           />
         </form>
       </div>

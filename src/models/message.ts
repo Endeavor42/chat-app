@@ -1,4 +1,4 @@
-import { IMessage } from "./../types/todo";
+import { IMessage } from "../types/message";
 import { model, Schema } from "mongoose";
 
 const messageSchema: Schema = new Schema(
@@ -7,7 +7,7 @@ const messageSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-    message: {
+    text: {
       type: String,
       required: true,
     },

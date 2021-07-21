@@ -1,4 +1,4 @@
 export interface IMessage {
   type: "user" | "friend";
-  message: string;
+  text: string;
 }
